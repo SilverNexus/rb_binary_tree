@@ -278,7 +278,7 @@ void RBTree<T>::output_traversal(std::ostream &output, Node<T> *at) const{
     }
     
     // Output the node.
-    output << at;
+    output << *at;
     
     if (at->right){
 	output_traversal(output, at->right);

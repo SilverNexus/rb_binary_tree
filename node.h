@@ -69,8 +69,8 @@ class Node{
 	 */
 	Node<T> *sibling();
 	// Some inline getters and setters for private members
-	inline COLOR get_color(){ return color; }
-	inline T *get_data(){ return data; }
+	inline COLOR get_color() const{ return color; }
+	inline T *get_data() const{ return data; }
 	inline bool is_lone_ref(){ return is_local_dynamic; }
 	inline void set_lone_ref(bool is_loc){ is_local_dynamic = is_loc; }
 	inline void set_data(T *dat){ data = dat; }
@@ -99,10 +99,10 @@ class Node{
 
 template<typename T> std::ostream &operator<<(std::ostream &output, const Node<T> &node){
     // Don't try to dereference a null pointer.
-    if (node.data)
-	output << *node.data << "/" << (node.color == BLACK ? "B" : "R") << (!node.parent ? "/ROOT" : "") << " ";
+    if (node.get_data())
+	output << *node.get_data() << "/" << (node.get_color() == BLACK ? "B" : "R") << (!node.parent ? "/ROOT" : "") << " ";
     else
-	output << "null/" << (node.color == BLACK ? "B" : "R") << (!node.parent ? "/ROOT" : "") << " ";
+	output << "null/" << (node.get_color() == BLACK ? "B" : "R") << (!node.parent ? "/ROOT" : "") << " ";
     return output;
 }
 
