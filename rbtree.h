@@ -286,7 +286,7 @@ void RBTree<T>::output_traversal(std::ostream &output, Node<T> *at) const{
 }
 
 /**
- * These rebalance methods have been adapted from the C code on Wikipedia,
+ * These rebalance and rotation methods have been adapted from the C code on Wikipedia,
  * which is released under the Creative Commons Attribution-ShareAlike 3.0 Unported License
  */
 template <typename T>
