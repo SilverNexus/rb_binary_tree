@@ -148,7 +148,7 @@ void RBTree<T>::insert(T *indata, bool only_use){
     T *dat;
     // Yes, the assignment in the loop is intentional. We save a function call by storing it here.
     while ( (dat = check->get_data()) ){
-	// For this to work, it is assumed you have oveloaded comparison operators
+	// For this to work, it is assumed you have overloaded comparison operators for whatever type is in the tree.
 	if (*indata < *dat){
 	    check = check->left;
 	}
@@ -169,6 +169,7 @@ void RBTree<T>::insert(T *indata, bool only_use){
     check->right->parent = check;
     rebalance_part1(check);
     // Ensure root is pointing to the right place.
+    /* FIXME: This may have been obsoleted by proper implementation of the rotate_left and rotate_right methods. */
     while (root->parent)
 	root = root->parent;
 }
@@ -263,7 +264,7 @@ Node<T> *RBTree<T>::find(T *data){
 template <typename T>
 std::ostream &operator<<(std::ostream &output, const RBTree<T> &tree){
     tree.output_traversal(output, tree.get_root());
-    // And make sure we get off the previous line
+    // And make sure we get off the previous line for future prompts and the like.
     output << std::endl;
     return output;
 }
@@ -272,7 +273,7 @@ std::ostream &operator<<(std::ostream &output, const RBTree<T> &tree){
 template <typename T>
 void RBTree<T>::output_traversal(std::ostream &output, Node<T> *at) const{
     assert(at && ((at->left && at->right) || (!at->left && !at->right)));
-    // Due to the design of the RB binary tree, both nodes or neither will exist.
+    // Due to the design of the RB binary tree, both child nodes or neither will exist.
     if (at->left){
 	output_traversal(output, at->left);
     }
@@ -398,6 +399,7 @@ void RBTree<T>::remove_prepare(Node<T> *n){
     n->parent = 0;
     
     if (n->get_color() == BLACK){
+	// Simple case to fix the black node counts in the tree.
 	if (child->get_color() == RED)
 	    child->set_color(BLACK);
 	else
