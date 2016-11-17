@@ -1,5 +1,13 @@
 /**
+ * Author: Daniel Hawkins
+ * Date: 2016-11-17
+ * File: rbtree.h
+ * Description:
  * Define the red-black tree and its collective operations.
+ *
+ * Built from code snippets on Wikipedia's article on red-black binary trees and original code.
+ *
+ * Licensed under Creative Commons BY-SA 3.0 License
  */
 
 #ifndef RBTREE_H

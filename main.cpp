@@ -1,3 +1,12 @@
+/**
+ * Author: Daniel Hawkins
+ * Date: 2016-11-17
+ * File: main.cpp
+ * Description: File to test functionality of the binary tree.
+ *
+ * Distributed under Creative Commons BY-SA 3.0 License
+ */
+
 #include <iostream>
 #include <cctype>
 #include "rbtree.h"

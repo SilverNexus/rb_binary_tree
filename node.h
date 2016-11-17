@@ -4,6 +4,8 @@
  * File: node.h
  * Description:
  * Defines the class for a binary tree node.
+ *
+ * Distributed under Creative Commons BY-SA 3.0 License.
  */
 
 #ifndef NODE_H
