@@ -97,12 +97,12 @@ class Node{
 	template<T> friend std::ostream &operator<<(std::ostream &output, const Node<T> &node);
 };
 
-template<T> std::ostream &operator<<(std::ostream &output, const Node<T> &node){
+template<typename T> std::ostream &operator<<(std::ostream &output, const Node<T> &node){
     // Don't try to dereference a null pointer.
-    if (data)
-	output << *data << "/" << color == BLACK ? "B" : "R") << (!parent ? "/ROOT" : "") << " ";
+    if (node.data)
+	output << *node.data << "/" << (node.color == BLACK ? "B" : "R") << (!node.parent ? "/ROOT" : "") << " ";
     else
-	output << "null/" << (color == BLACK ? "B" : "R") << (!parent ? "/ROOT" : "") << " ";
+	output << "null/" << (node.color == BLACK ? "B" : "R") << (!node.parent ? "/ROOT" : "") << " ";
     return output;
 }
 
