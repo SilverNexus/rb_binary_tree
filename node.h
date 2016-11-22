@@ -100,9 +100,11 @@ class Node{
 template<typename T> std::ostream &operator<<(std::ostream &output, const Node<T> &node){
     // Don't try to dereference a null pointer.
     if (node.get_data())
-	output << *node.get_data() << "/" << (node.get_color() == BLACK ? "B" : "R") << (!node.parent ? "/ROOT" : "") << " ";
+	output << *node.get_data();
     else
-	output << "null/" << (node.get_color() == BLACK ? "B" : "R") << (!node.parent ? "/ROOT" : "") << " ";
+	output << "null";
+    // Finish writing the line.
+    output << "/" << (node.get_color() == BLACK ? "B" : "R") << (!node.parent ? "/ROOT" : "") << " ";
     return output;
 }
 
