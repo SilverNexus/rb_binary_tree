@@ -133,6 +133,10 @@ Node<T>::Node(T *dat){
 
 template <typename T>
 Node<T>::~Node(){
+    // Prevent us from leaking our memory from deep copies and other situations
+    // where this is the only reference we have.
+    if (is_local_dynamic)
+	delete data;
 }
 
 template <typename T>

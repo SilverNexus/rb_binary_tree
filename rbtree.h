@@ -132,11 +132,6 @@ void RBTree<T>::tree_cleanup(Node<T> *at){
     if (at->right){
 	tree_cleanup(at->right);
     }
-    // Prevent us from leaking our memory from deep copies and other situations
-    // where this is the only reference we have.
-    if (at->is_lone_ref())
-	// This should work -- we fetch the pointer and then free at that address.
-	delete at->get_data();
     delete at;
 }
 
