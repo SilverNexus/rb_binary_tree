@@ -44,6 +44,9 @@ int main(){
 	cout << tree;
 	cout << "Enter another? (Y/N) ";
 	cin >> yes_no;
+	delete tmp;
     } while (toupper(yes_no) == 'Y');
+    // Cleanup
+    delete input;
     return 0;
 }
