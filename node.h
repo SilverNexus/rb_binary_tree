@@ -59,19 +59,19 @@ class Node{
 	/**
 	 * Returns the grandparent of this node.
 	 */
-	Node<T> *grandparent();
+	Node<T> *grandparent() const;
 	/**
 	 * Returns the sibling of the parent of this node.
 	 */
-	Node<T> *uncle();
+	Node<T> *uncle() const;
 	/**
 	 * Returns the sibling of the current node
 	 */
-	Node<T> *sibling();
+	Node<T> *sibling() const;
 	// Some inline getters and setters for private members
 	inline COLOR get_color() const{ return color; }
 	inline T *get_data() const{ return data; }
-	inline bool is_lone_ref(){ return is_local_dynamic; }
+	inline bool is_lone_ref() const{ return is_local_dynamic; }
 	inline void set_lone_ref(bool is_loc){ is_local_dynamic = is_loc; }
 	inline void set_data(T *dat){ data = dat; }
 	inline void set_color(COLOR col){ color = col; }
@@ -147,7 +147,7 @@ void Node<T>::copy_data(T *dat){
 }
 
 template <typename T>
-Node<T> *Node<T>::uncle(){
+Node<T> *Node<T>::uncle() const{
     Node<T> *g = grandparent();
     if (!g){
 	return 0;
@@ -161,7 +161,7 @@ Node<T> *Node<T>::uncle(){
 }
 
 template <typename T>
-Node<T> *Node<T>::grandparent(){
+Node<T> *Node<T>::grandparent() const{
     // Since this is a member function, we can assert this node exists.
     if (parent){
 	return parent->parent;
@@ -171,7 +171,7 @@ Node<T> *Node<T>::grandparent(){
 }
 
 template <typename T>
-Node<T> *Node<T>::sibling(){
+Node<T> *Node<T>::sibling() const{
     if (parent){
 	if (this == parent->left){
 	    return parent->right;
