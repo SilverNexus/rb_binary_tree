@@ -43,7 +43,7 @@ int main(){
 		    else
 			cout << "Node not found.\n";
 		    cout << tree;
-		} while (tmp);
+		} while (!tmp);
 		delete tmp;
 		delete input;
 		break;
